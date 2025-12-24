@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Tracker</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div>
+          <h1>Job Application Tracker</h1>
+          <p class="sub">Track applications, update status, stay organized.</p>
+        </div>
+        <div class="pill" id="statusPill">Connected</div>
+      </header>
+
+      <section class="card">
+        <h2>Add an application</h2>
+        <form id="createForm" class="form">
+          <div class="grid">
+            <label>
+              Company
+              <input id="company" type="text" placeholder="Google" required />
+            </label>
+
+            <label>
+              Position
+              <input id="position" type="text" placeholder="Backend Intern" required />
+            </label>
+
+            <label class="span2">
+              Job URL
+              <input id="jobUrl" type="url" placeholder="https://example.com/job" />
+            </label>
+          </div>
+
+          <div class="row">
+            <button type="submit" class="btn primary">Add</button>
+            <button type="button" id="resetBtn" class="btn">Clear</button>
+            <div class="hint" id="formHint"></div>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <h2>Applications</h2>
+
+          <div class="row">
+            <label class="inline">
+              Filter
+              <select id="statusFilter">
+                <option value="">All</option>
+                <option value="APPLIED">APPLIED</option>
+                <option value="INTERVIEW">INTERVIEW</option>
+                <option value="OFFER">OFFER</option>
+                <option value="REJECTED">REJECTED</option>
+              </select>
+            </label>
+
+            <button type="button" id="refreshBtn" class="btn">Refresh</button>
+          </div>
+        </div>
+
+        <div class="tableWrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Applied</th>
+                <th>Link</th>
+                <th class="actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr>
+                <td colspan="6" class="muted">Loading…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="footnote" id="errorBox"></div>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
